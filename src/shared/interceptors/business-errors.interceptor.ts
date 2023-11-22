@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { CallHandler, ExecutionContext, HttpException, HttpStatus, Injectable, NestInterceptor } from '@nestjs/common';
 import { catchError, Observable } from 'rxjs';
-import { BusinessError } from '../../errors/business-errors';
+import { BusinessError } from '../errors/business-errors';
 
 @Injectable()
 export class BusinessErrorsInterceptor implements NestInterceptor {
