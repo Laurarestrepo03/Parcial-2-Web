@@ -75,6 +75,21 @@ describe('FotoService', () => {
     expect(storedFoto.fecha).toEqual(newFoto.fecha);
   });
 
+  it('create should throw an exception for an invalid ISO', async () => {
+    const foto: FotoEntity = {
+      id: faker.string.uuid(),
+      ISO: faker.number.int({min: 6401, max: 7000}),
+      valObturacion: faker.number.int({min: 2, max: 250}),
+      apertura: faker.number.int({min: 1, max: 32}),
+      fecha: faker.date.past(),
+      usuario: usuario,
+      album: album
+    };
+
+    await expect(() => service.createFoto(foto)).rejects.toHaveProperty("message", "ISO was not between 100 and 6400");
+
+  });
+
   it('delete should remove a photo', async () => {
     const foto: FotoEntity = fotoList[0];
     await service.deleteFoto(foto.id);
