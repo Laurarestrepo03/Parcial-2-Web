@@ -31,10 +31,10 @@ describe('AlbumService', () => {
     albumList = [];
     for (let i = 0; i < 5; i++) {
       const album: AlbumEntity = await repository.save({
-        id: faker.datatype.uuid(),
+        id: faker.string.uuid(),
         fechaInicio: faker.date.past(),
         fechaFin: faker.date.future(),
-        titutlo: faker.string.sample()
+        titulo: faker.lorem.word()
       });
       albumList.push(album);
     }

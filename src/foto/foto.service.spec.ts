@@ -7,11 +7,15 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { faker } from '@faker-js/faker';
 import { FotoService } from './foto.service';
 import { FotoEntity } from './foto.entity';
+import { UsuarioEntity } from '../usuario/usuario.entity';
+import { AlbumEntity } from '../album/album.entity';
 
 describe('FotoService', () => {
   let service: FotoService;
   let repository: Repository<FotoEntity>;
   let fotoList: FotoEntity[];
+  let usuario: UsuarioEntity;
+  let album: AlbumEntity;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -31,11 +35,13 @@ describe('FotoService', () => {
     fotoList = [];
     for (let i = 0; i < 5; i++) {
       const foto: FotoEntity = await repository.save({
-        id: faker.datatype.uuid(),
-        ISO: faker.datatype.number({min: 100, max: 6400}),
-        valObturacion: faker.datatype.number({min: 2, max: 250}),
-        apertura: faker.datatype.number({min: 1, max: 32}),
-        fecha: faker.date.past()
+        id: faker.string.uuid(),
+        ISO: faker.number.int({min: 100, max: 6400}),
+        valObturacion: faker.number.int({min: 2, max: 250}),
+        apertura: faker.number.int({min: 1, max: 32}),
+        fecha: faker.date.past(),
+        usuario: usuario,
+        album: album
       });
       fotoList.push(foto);
     }
@@ -47,11 +53,13 @@ describe('FotoService', () => {
 
   it('create should return a new foto', async () => {
     const foto: FotoEntity = {
-      id: faker.datatype.uuid(),
-      ISO: faker.datatype.number({min: 100, max: 6400}),
-      valObturacion: faker.datatype.number({min: 2, max: 250}),
-      apertura: faker.datatype.number({min: 1, max: 32}),
-      fecha: faker.date.past()
+      id: faker.string.uuid(),
+      ISO: faker.number.int({min: 100, max: 6400}),
+      valObturacion: faker.number.int({min: 2, max: 250}),
+      apertura: faker.number.int({min: 1, max: 32}),
+      fecha: faker.date.past(),
+      usuario: usuario,
+      album: album
     };
 
     const newFoto: FotoEntity = await service.createFoto(foto);

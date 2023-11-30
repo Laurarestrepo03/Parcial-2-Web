@@ -1,18 +1,18 @@
 /* eslint-disable prettier/prettier */
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { GenreEntity } from '../../showies/genre/genre.entity';
-import { ShowEntity } from '../../showies/show/show.entity';
-import { UserEntity } from '../../showies/user/user.entity';
-import { WatchingEntity } from '../../showies/watching/watching.entity';
+import { AlbumEntity } from '../../album/album.entity';
+import { FotoEntity } from '../../foto/foto.entity';
+import { RedSocialEntity } from '../../red-social/red-social.entity';
+import { UsuarioEntity } from '../../usuario/usuario.entity';
 
 export const TypeOrmTestingConfig = () => [
  TypeOrmModule.forRoot({
    type: 'sqlite',
    database: ':memory:',
    dropSchema: true,
-   entities: [GenreEntity, ShowEntity, UserEntity, WatchingEntity],
+   entities: [AlbumEntity, FotoEntity, RedSocialEntity, UsuarioEntity],
    synchronize: true,
    keepConnectionAlive: true
  }),
- TypeOrmModule.forFeature([GenreEntity, ShowEntity, UserEntity, WatchingEntity]),
+ TypeOrmModule.forFeature([AlbumEntity, FotoEntity, RedSocialEntity, UsuarioEntity]),
 ];
