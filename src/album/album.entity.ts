@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { FotoEntity } from '../foto/foto.entity';
 
 @Entity()
 export class AlbumEntity {
@@ -15,5 +16,8 @@ export class AlbumEntity {
 
     @Column()
     titulo: string;
+
+    @OneToMany(() => FotoEntity, foto => foto.album)
+    fotos: FotoEntity[]
 
 }

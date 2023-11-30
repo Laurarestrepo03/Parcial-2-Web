@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { UsuarioEntity } from '../usuario/usuario.entity';
 
 @Entity()
 export class RedSocialEntity {
@@ -12,5 +13,8 @@ export class RedSocialEntity {
 
     @Column()
     slogan: string;
+
+    @OneToMany(() => UsuarioEntity, usuario => usuario.red_social)
+    usuarios: UsuarioEntity[];
 
 }
