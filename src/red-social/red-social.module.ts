@@ -1,4 +1,8 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
+import { RedSocialService } from './red-social.service';
 
-@Module({})
+@Module({
+  providers: [RedSocialService]
+})
 export class RedSocialModule {}
