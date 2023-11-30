@@ -51,7 +51,7 @@ describe('FotoService', () => {
     expect(service).toBeDefined();
   });
 
-  it('create should return a new foto', async () => {
+  it('create should return a new photo', async () => {
     const foto: FotoEntity = {
       id: faker.string.uuid(),
       ISO: faker.number.int({min: 100, max: 6400}),
