@@ -65,9 +65,7 @@ describe('FotoService', () => {
     const newFoto: FotoEntity = await service.createFoto(foto);
     expect(newFoto).not.toBeNull();
 
-    const storedFoto: FotoEntity = await repository.findOne({
-      where: { id: newFoto.id },
-    });
+    const storedFoto: FotoEntity = await repository.findOne({where: { id: newFoto.id }});
     expect(storedFoto).not.toBeNull();
     expect(storedFoto.ISO).toEqual(newFoto.ISO);
     expect(storedFoto.valObturacion).toEqual(newFoto.valObturacion);
@@ -75,18 +73,18 @@ describe('FotoService', () => {
     expect(storedFoto.fecha).toEqual(newFoto.fecha);
   });
 
-  it('create should throw an exception for an invalid ISO', async () => {
+  it('create should throw an exception for an invalid photo', async () => {
     const foto: FotoEntity = {
       id: faker.string.uuid(),
-      ISO: faker.number.int({min: 6401, max: 7000}),
-      valObturacion: faker.number.int({min: 2, max: 250}),
-      apertura: faker.number.int({min: 1, max: 32}),
+      ISO: 3251, //above avg
+      valObturacion: 127, //above avg
+      apertura: 17, //above avg
       fecha: faker.date.past(),
       usuario: usuario,
       album: album
     };
 
-    await expect(() => service.createFoto(foto)).rejects.toHaveProperty("message", "ISO was not between 100 and 6400");
+    await expect(() => service.createFoto(foto)).rejects.toHaveProperty("message", "More than two values were above average");
 
   });
 

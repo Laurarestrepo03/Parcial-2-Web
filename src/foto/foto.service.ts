@@ -28,7 +28,6 @@ export class FotoService {
             if (foto.ISO > (100+6400)/2) { cuenta = cuenta+1; }
             if (foto.valObturacion > (2+250)/2) { cuenta = cuenta+1; }
             if (foto.apertura > (1+32)/2) { cuenta = cuenta+1; }
-
             if (cuenta > 2) {
                 throw new BusinessLogicException("More than two values were above average", BusinessError.PRECONDITION_FAILED);
             }  
