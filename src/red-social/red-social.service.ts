@@ -13,7 +13,7 @@ export class RedSocialService {
         private readonly redSocialRepository: Repository<RedSocialEntity>
     ){}
 
-    async createLibreria(red_social: RedSocialEntity): Promise<RedSocialEntity> {
+    async createRedSocial(red_social: RedSocialEntity): Promise<RedSocialEntity> {
         if (red_social.slogan.length >= 20) {
             return await this.redSocialRepository.save(red_social);
         }      
