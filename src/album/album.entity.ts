@@ -12,7 +12,7 @@ export class AlbumEntity {
     fechaInicio: Date;
 
     @Column()
-    fechafin: Date;
+    fechaFin: Date;
 
     @Column()
     titulo: string;

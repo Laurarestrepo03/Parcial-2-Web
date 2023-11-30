@@ -8,7 +8,6 @@ import { faker } from '@faker-js/faker';
 import { FotoService } from './foto.service';
 import { FotoEntity } from './foto.entity';
 
-
 describe('FotoService', () => {
   let service: FotoService;
   let repository: Repository<FotoEntity>;
@@ -32,10 +31,10 @@ describe('FotoService', () => {
     fotoList = [];
     for (let i = 0; i < 5; i++) {
       const foto: FotoEntity = await repository.save({
-        id: faker.lorem.sentence(),
+        id: faker.datatype.uuid(),
         ISO: faker.datatype.number({min: 100, max: 6400}),
         valObturacion: faker.datatype.number({min: 2, max: 250}),
-        APERTURA: faker.datatype.number({min: 1, max: 32})
+        apertura: faker.datatype.number({min: 1, max: 32})
       });
       fotoList.push(foto);
     }
@@ -47,9 +46,9 @@ describe('FotoService', () => {
 
   it('delete should remove a foto', async () => {
     const foto: FotoEntity = fotoList[0];
-    await service.delete(foto.id);
-    const deletedFoto: FotoEntity = await repository.findOne({ where: {id} })
+    await service.deleteFoto(foto.id);
+    const deletedFoto: FotoEntity = await repository.findOne({where:{ id: foto.id }});
     expect(deletedFoto).toBeNull();
   });
-
+  
 });

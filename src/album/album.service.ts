@@ -39,7 +39,7 @@ export class AlbumService {
         const album: AlbumEntity = await this.albumRepository.findOne({where: {id: albumId}, relations: ["fotos"]})
         if (!album)
             throw new BusinessLogicException("The album with the given id was not found", BusinessError.NOT_FOUND);
-        if (album.fechaInicio <= foto.fecha && foto.fecha <= album.fechafin) {
+        if (album.fechaInicio <= foto.fecha && foto.fecha <= album.fechaFin) {
             album.fotos = [...album.fotos, foto];
             return await this.albumRepository.save(foto);
         }  
