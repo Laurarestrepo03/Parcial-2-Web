@@ -13,10 +13,10 @@ export class FotoEntity {
     ISO: number;
 
     @Column()
-    velObturacion: number;
+    valObturacion: number;
 
     @Column()
-    apertura: string;
+    apertura: number;
 
     @Column()
     fecha: Date;
