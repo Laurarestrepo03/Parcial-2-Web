@@ -51,4 +51,10 @@ describe('AlbumService', () => {
     expect(deletedAlbum).toBeNull();
   });
 
+  it('delete should throw an exception for an invalid album', async () => {
+    const album: AlbumEntity = albumList[0];
+    await service.deleteAlbum(album.id);
+    await expect(() => service.deleteAlbum("0")).rejects.toHaveProperty("message", "The album with the given id was not found")
+  });
+
 });

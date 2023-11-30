@@ -44,7 +44,7 @@ export class AlbumService {
             return await this.albumRepository.save(foto);
         }  
         else {
-            throw new BusinessLogicException("Fecha for foto was not between album fecha inicio and album fecha fin", BusinessError.NOT_FOUND);
+            throw new BusinessLogicException("Fecha for photo was not between album fecha inicio and fecha fin", BusinessError.NOT_FOUND);
         } 
     }
 

@@ -75,11 +75,17 @@ describe('FotoService', () => {
     expect(storedFoto.fecha).toEqual(newFoto.fecha);
   });
 
-  it('delete should remove a foto', async () => {
+  it('delete should remove a photo', async () => {
     const foto: FotoEntity = fotoList[0];
     await service.deleteFoto(foto.id);
     const deletedFoto: FotoEntity = await repository.findOne({where:{ id: foto.id }});
     expect(deletedFoto).toBeNull();
+  });
+
+  it('delete should throw an exception for an invalid photo', async () => {
+    const foto: FotoEntity = fotoList[0];
+    await service.deleteFoto(foto.id);
+    await expect(() => service.deleteFoto("0")).rejects.toHaveProperty("message", "The photo with the given id was not found")
   });
   
 });
