@@ -6,7 +6,7 @@ import { AlbumEntity } from './album.entity';
 import { plainToInstance } from 'class-transformer';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors.interceptor';
 
-@Controller('album')
+@Controller('albums')
 @UseInterceptors(BusinessErrorsInterceptor)
 export class AlbumController {
 
@@ -24,13 +24,13 @@ export class AlbumController {
     }
 
     @Post(':albumId/fotos/:fotoId')
-    async addArtworkMuseum(@Param('albumId') albumId: string, @Param('fotoId') fotoId: string){
+    async addPhotoToAlbum(@Param('albumId') albumId: string, @Param('fotoId') fotoId: string){
         return await this.albumService.addPhotoToAlbum(albumId, fotoId);
     }
 
     @Delete(':albumId')
     @HttpCode(204)
-    async delete(@Param('albumId') albumId: string) {
+    async deleteAlbum(@Param('albumId') albumId: string) {
         return await this.albumService.deleteAlbum(albumId);
     }
 

@@ -137,7 +137,7 @@ describe('AlbumService', () => {
       fecha: faker.date.past({refDate: newAlbum.fechaInicio}) 
     });
 
-    await expect(() => service.addPhotoToAlbum(newAlbum.id, newFoto.id)).rejects.toHaveProperty("message", "Fecha for foto was not between album fecha inicio and fecha fin");
+    await expect(() => service.addPhotoToAlbum(newAlbum.id, newFoto.id)).rejects.toHaveProperty("message", "Fecha for photo was not between album fecha inicio and fecha fin");
   });
 
   it('deleteAlbum should remove an album', async () => {

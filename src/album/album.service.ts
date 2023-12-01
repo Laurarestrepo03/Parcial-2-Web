@@ -17,10 +17,10 @@ export class AlbumService {
     ){}
 
     async createAlbum(album: AlbumEntity): Promise<AlbumEntity> {
-        if (album.titulo != "" && album.titulo != null) {
+        if (album.titulo != "") {
             return await this.albumRepository.save(album);
         }    
-        else {
+        else if (album.titulo == "") {
             throw new BusinessLogicException("Titulo was empty", BusinessError.PRECONDITION_FAILED);
         }  
     }
@@ -44,7 +44,7 @@ export class AlbumService {
             return await this.albumRepository.save(album);
         }  
         else if (album.fechaInicio > foto.fecha || foto.fecha > album.fechaFin) {
-            throw new BusinessLogicException("Fecha for foto was not between album fecha inicio and fecha fin", BusinessError.NOT_FOUND);
+            throw new BusinessLogicException("Fecha for photo was not between album fecha inicio and fecha fin", BusinessError.PRECONDITION_FAILED);
         } 
     }
 
