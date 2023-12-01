@@ -7,7 +7,7 @@ import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-co
 import { faker } from '@faker-js/faker';
 import { UsuarioService } from './usuario.service';
 import { UsuarioEntity } from './usuario.entity';
-import { RedSocialEntity } from '../redSocial/redSocial.entity';
+import { RedSocialEntity } from '../red-social/red-social.entity';
 
 describe('UsuarioService', () => {
   let service: UsuarioService;

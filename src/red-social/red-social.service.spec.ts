@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { Test, TestingModule } from '@nestjs/testing';
-import { RedSocialService } from './redSocial.service';
+import { RedSocialService } from './red-social.service';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-config';
 
 import { faker } from '@faker-js/faker';
-import { RedSocialEntity } from './redSocial.entity';
+import { RedSocialEntity } from './red-social.entity';
 
 describe('RedSocialService', () => {
   let service: RedSocialService;

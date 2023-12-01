@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { RedSocialEntity } from '../redSocial/redSocial.entity';
+import { RedSocialEntity } from '../red-social/red-social.entity';
 import { FotoEntity } from '../foto/foto.entity';
 
 @Entity()
