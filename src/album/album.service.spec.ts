@@ -91,7 +91,7 @@ describe('AlbumService', () => {
     await expect(() => service.findAlbumById("0")).rejects.toHaveProperty("message", "The album with the given id was not found")
   });
 
-  it('addPhotoToAlbum should add a photo to an album', async () => {
+  it('addPhotoToAlbum should add a foto to an album', async () => {
     
     const newAlbum: AlbumEntity = await albumRepository.save({
       id: faker.string.uuid(),
@@ -119,7 +119,7 @@ describe('AlbumService', () => {
     expect(result.fotos[0].fecha).toEqual(newFoto.fecha)
   });
 
-  it('addPhotoToAlbum should should throw exception for an invalid photo', async () => {
+  it('addPhotoToAlbum should should throw exception for an invalid foto', async () => {
     
     const newAlbum: AlbumEntity = await albumRepository.save({
       id: faker.string.uuid(),
@@ -137,7 +137,7 @@ describe('AlbumService', () => {
       fecha: faker.date.past({refDate: newAlbum.fechaInicio}) 
     });
 
-    await expect(() => service.addPhotoToAlbum(newAlbum.id, newFoto.id)).rejects.toHaveProperty("message", "Fecha for photo was not between album fecha inicio and fecha fin");
+    await expect(() => service.addPhotoToAlbum(newAlbum.id, newFoto.id)).rejects.toHaveProperty("message", "Fecha for foto was not between album fecha inicio and fecha fin");
   });
 
   it('deleteAlbum should remove an album', async () => {

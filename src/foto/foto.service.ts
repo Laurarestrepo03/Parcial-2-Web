@@ -40,7 +40,7 @@ export class FotoService {
     async findFotoById(id: string): Promise<FotoEntity> {
         const foto: FotoEntity = await this.fotoRepository.findOne({where: {id}, relations: ["usuario", "album"] } );
         if (!foto)
-          throw new BusinessLogicException("The photo with the given id was not found", BusinessError.NOT_FOUND);
+          throw new BusinessLogicException("The foto with the given id was not found", BusinessError.NOT_FOUND);
    
         return foto;
     }
@@ -52,7 +52,7 @@ export class FotoService {
     async deleteFoto(id: string) {
         const foto: FotoEntity = await this.fotoRepository.findOne({where:{id}});
         if (!foto)
-          throw new BusinessLogicException("The photo with the given id was not found", BusinessError.NOT_FOUND);
+          throw new BusinessLogicException("The foto with the given id was not found", BusinessError.NOT_FOUND);
         await this.fotoRepository.remove(foto);
     }
 }

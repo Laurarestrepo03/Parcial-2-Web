@@ -14,7 +14,7 @@ export class RedSocialEntity {
     @Column()
     slogan: string;
 
-    @OneToMany(() => UsuarioEntity, usuario => usuario.red_social)
+    @OneToMany(() => UsuarioEntity, usuario => usuario.redSocial)
     usuarios: UsuarioEntity[];
 
 }

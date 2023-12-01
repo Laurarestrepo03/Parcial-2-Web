@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { RedSocialEntity } from './red-social.entity';
+import { RedSocialEntity } from './redSocial.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 
@@ -13,12 +13,12 @@ export class RedSocialService {
         private readonly redSocialRepository: Repository<RedSocialEntity>
     ){}
 
-    async createRedSocial(red_social: RedSocialEntity): Promise<RedSocialEntity> {
-        if (red_social.slogan.length >= 20) {
-            return await this.redSocialRepository.save(red_social);
+    async createRedSocial(redSocial: RedSocialEntity): Promise<RedSocialEntity> {
+        if (redSocial.slogan.length >= 20) {
+            return await this.redSocialRepository.save(redSocial);
         }      
-        else if (red_social.slogan.length < 20) {
-            throw new BusinessLogicException("Slogan less than 20 chars long", BusinessError.PRECONDITION_FAILED);
+        else if (redSocial.slogan.length < 20) {
+            throw new BusinessLogicException("Slogan was less than 20 chars long", BusinessError.PRECONDITION_FAILED);
         }
     }
 }

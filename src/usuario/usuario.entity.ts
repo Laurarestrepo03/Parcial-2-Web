@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { RedSocialEntity } from '../red-social/red-social.entity';
+import { RedSocialEntity } from '../redSocial/redSocial.entity';
 import { FotoEntity } from '../foto/foto.entity';
 
 @Entity()
@@ -15,8 +15,8 @@ export class UsuarioEntity {
     @Column()
     telefono: string;
 
-    @ManyToOne(() => RedSocialEntity, red_social => red_social.usuarios)
-    red_social: UsuarioEntity;
+    @ManyToOne(() => RedSocialEntity, redSocial => redSocial.usuarios)
+    redSocial: UsuarioEntity;
 
     @OneToMany(() => FotoEntity, foto => foto.usuario)
     fotos: FotoEntity[]

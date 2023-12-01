@@ -2,7 +2,7 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AlbumEntity } from '../../album/album.entity';
 import { FotoEntity } from '../../foto/foto.entity';
-import { RedSocialEntity } from '../../red-social/red-social.entity';
+import { RedSocialEntity } from '../../redSocial/redSocial.entity';
 import { UsuarioEntity } from '../../usuario/usuario.entity';
 
 export const TypeOrmTestingConfig = () => [
