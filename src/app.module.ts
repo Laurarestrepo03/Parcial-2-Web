@@ -11,7 +11,6 @@ import { FotoEntity } from './foto/foto.entity';
 import { UsuarioEntity } from './usuario/usuario.entity';
 import { RedSocialEntity } from './red-social/red-social.entity';
 import { AlbumEntity } from './album/album.entity';
-import { RedSocialController } from './red-social/red-social.controller';
 
 @Module({
   imports: [FotoModule, UsuarioModule, RedSocialModule, AlbumModule,
@@ -27,7 +26,7 @@ import { RedSocialController } from './red-social/red-social.controller';
       synchronize: true,
       keepConnectionAlive: true
     })],
-  controllers: [AppController, RedSocialController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

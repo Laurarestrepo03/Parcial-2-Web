@@ -1,15 +1,14 @@
 /* eslint-disable prettier/prettier */
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class AlbumDto {
-
-    @IsNotEmpty()
-    readonly fechaInicio: Date;
-
-    @IsNotEmpty()
-    readonly fechaFin: Date;
+export class RedSocialDto {
 
     @IsString()
-    readonly titulo: string;
+    @IsNotEmpty()
+    readonly nombre: string;
+
+    @IsString()
+    @IsNotEmpty()
+    readonly slogan: string;
 
 }

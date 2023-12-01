@@ -52,7 +52,14 @@ export class AlbumService {
         const album: AlbumEntity = await this.albumRepository.findOne({where:{id}});
         if (!album)
           throw new BusinessLogicException("The album with the given id was not found", BusinessError.NOT_FOUND);
-        await this.albumRepository.remove(album);
+        try {
+            await this.albumRepository.remove(album);
+        }
+        catch (error) {
+            if (error.code === '23503') {
+                throw new BusinessLogicException("Album with photos cannot be deleted", BusinessError.PRECONDITION_FAILED);
+            }
+        }
     }
 
 }

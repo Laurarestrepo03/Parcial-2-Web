@@ -4,13 +4,16 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { FotoEntity } from './foto.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
+import { AlbumEntity } from 'src/album/album.entity';
 
 @Injectable()
 export class FotoService {
 
     constructor(
         @InjectRepository(FotoEntity)
-        private readonly fotoRepository: Repository<FotoEntity>
+        private readonly fotoRepository: Repository<FotoEntity>,
+        @InjectRepository(FotoEntity)
+        private readonly albumRepository: Repository<AlbumEntity>
     ){}
 
     async createFoto(foto: FotoEntity): Promise<FotoEntity> {
@@ -54,5 +57,12 @@ export class FotoService {
         if (!foto)
           throw new BusinessLogicException("The photo with the given id was not found", BusinessError.NOT_FOUND);
         await this.fotoRepository.remove(foto);
+        if (foto.album != null) {
+            const album: AlbumEntity = foto.album;
+            const ultima: FotoEntity = album.fotos[-1];
+            if (ultima == foto) {
+                await this.albumRepository.remove(album)
+            }
+        }    
     }
 }
