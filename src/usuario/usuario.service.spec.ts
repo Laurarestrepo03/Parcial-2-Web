@@ -96,6 +96,6 @@ describe('UsuarioService', () => {
     expect(usuarios).toHaveLength(usuarioList.length);
   });
 
-  //findAllFotos does not have a negative case
+  //findAllUsuarios does not have a negative case
 
 });
