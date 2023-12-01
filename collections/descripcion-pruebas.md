@@ -63,7 +63,7 @@ Esta prueba intenta recuperar una foto con un id inválido. Es importante hacer 
 Esta prueba intenta recuperar todas las fotos. Es importante hacer esta prueba porque, además de ser un método importante, verifica que la adición de todas las fotos haya funcionado.
 
 ### Delete a photo
-Esta prueba permite borrar una foto. Es importante hacer esta prueba porque, además de ser un método importante, permite comprobar, en dado caso de que esta foto haya sido añadida a un álbum, que ya no aparezaca dentro de él. Además, también permite comprobar, al correr la prueba Get one album, que un álbum haya sido borrado si la foto eliminada era la última.
+Esta prueba permite borrar una foto. Es importante hacer esta prueba porque, además de ser un método importante, permite comprobar, en dado caso de que esta foto haya sido añadida a un álbum, que ya no aparezca dentro de él. Además, también permite comprobar, al correr la prueba Get one album, que un álbum haya sido borrado si la foto eliminada era la última.
 
 ### Delete an invalid photo
 Esta prueba intenta borrar una foto con un id inválido. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y se muestre un mensaje de error cuando se intente eliminar una foto que no existe.
