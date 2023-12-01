@@ -54,9 +54,9 @@ describe('FotoService', () => {
   it('create should return a new photo', async () => {
     const foto: FotoEntity = {
       id: faker.string.uuid(),
-      ISO: faker.number.int({min: 100, max: 6400}),
-      valObturacion: faker.number.int({min: 2, max: 250}),
-      apertura: faker.number.int({min: 1, max: 32}),
+      ISO: faker.number.int({min: 100, max: 3250}), //3250 so it is not above avg
+      valObturacion: faker.number.int({min: 2, max: 126}), //126 so it is not above avg
+      apertura: faker.number.int({min: 1, max: 16}), //16 so it is not above avg
       fecha: faker.date.past(),
       usuario: usuario,
       album: album

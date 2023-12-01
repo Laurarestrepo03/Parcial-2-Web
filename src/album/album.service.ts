@@ -36,14 +36,14 @@ export class AlbumService {
         const foto: FotoEntity = await this.fotoRepository.findOne({where: {id: photoId}});
         if (!foto)
             throw new BusinessLogicException("The photo with the given id was not found", BusinessError.NOT_FOUND);
-        const album: AlbumEntity = await this.albumRepository.findOne({where: {id: albumId}, relations: ["fotos"]})
+        const album: AlbumEntity = await this.albumRepository.findOne({where: {id: albumId}, relations: ["fotos"]});
         if (!album)
             throw new BusinessLogicException("The album with the given id was not found", BusinessError.NOT_FOUND);
         if (album.fechaInicio <= foto.fecha && foto.fecha <= album.fechaFin) {
             album.fotos = [...album.fotos, foto];
-            return await this.albumRepository.save(foto);
+            return await this.albumRepository.save(album);
         }  
-        else {
+        else if (album.fechaInicio > foto.fecha || foto.fecha > album.fechaFin) {
             throw new BusinessLogicException("Fecha for photo was not between album fecha inicio and fecha fin", BusinessError.NOT_FOUND);
         } 
     }
