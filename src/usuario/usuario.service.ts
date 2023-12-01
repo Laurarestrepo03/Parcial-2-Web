@@ -23,7 +23,7 @@ export class UsuarioService {
     }
 
     async findUsuarioById(id: string): Promise<UsuarioEntity> {
-        const usuario: UsuarioEntity = await this.usuarioRepository.findOne({where: {id}, relations: ["redSocial", "fotos"] } );
+        const usuario: UsuarioEntity = await this.usuarioRepository.findOne({where: {id}, relations: ["redSocial", "fotos"]});
         if (!usuario)
           throw new BusinessLogicException("The user with the given id was not found", BusinessError.NOT_FOUND);
    

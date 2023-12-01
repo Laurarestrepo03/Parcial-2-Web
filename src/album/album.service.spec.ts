@@ -143,7 +143,7 @@ describe('AlbumService', () => {
   it('deleteAlbum should remove an album', async () => {
     const album: AlbumEntity = albumList[0];
     await service.deleteAlbum(album.id);
-    const deletedAlbum: AlbumEntity = await albumRepository.findOne({where:{ id: album.id }});
+    const deletedAlbum: AlbumEntity = await albumRepository.findOne({where:{ id: album.id}});
     expect(deletedAlbum).toBeNull();
   });
 

@@ -41,7 +41,7 @@ export class FotoService {
     }
 
     async findFotoById(id: string): Promise<FotoEntity> {
-        const foto: FotoEntity = await this.fotoRepository.findOne({where: {id}, relations: ["usuario", "album"] } );
+        const foto: FotoEntity = await this.fotoRepository.findOne({where: {id}, relations: ["usuario", "album"]});
         if (!foto)
           throw new BusinessLogicException("The photo with the given id was not found", BusinessError.NOT_FOUND);
    
@@ -53,17 +53,18 @@ export class FotoService {
     }
 
     async deleteFoto(id: string) {
-        const foto: FotoEntity = await this.fotoRepository.findOne({where:{id}});
-        if (!foto)
+        const foto: FotoEntity = await this.fotoRepository.findOne({where: {id}, relations: ['album']});
+        if (!foto) {
           throw new BusinessLogicException("The photo with the given id was not found", BusinessError.NOT_FOUND);
-        const fotoCopy: FotoEntity = foto;
-        await this.fotoRepository.remove(foto); 
-        if (fotoCopy.album != null) {
-            const album: AlbumEntity = foto.album;
-            const ultima: FotoEntity = (await this.albumService.findAlbumById(album.id)).fotos[-1];
-            if (ultima.id == fotoCopy.id) {
-                await this.albumService.deleteAlbum(album.id);
+        }
+        const albumId = foto.album?.id;
+        await this.fotoRepository.remove(foto);
+        if (albumId != undefined) {
+            const albumWithPhotos: AlbumEntity = await this.albumService.findAlbumById(albumId);
+            if (albumWithPhotos.fotos.length === 0) {
+              await this.albumService.deleteAlbum(albumId);
             }
-        }   
-    }
+          }
+      }
+      
 }

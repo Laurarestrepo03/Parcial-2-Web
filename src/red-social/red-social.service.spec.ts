@@ -37,7 +37,7 @@ describe('RedSocialService', () => {
     const newRedSocial: RedSocialEntity = await service.createRedSocial(redSocial);
     expect(newRedSocial).not.toBeNull();
 
-    const storedRedSocial: RedSocialEntity = await repository.findOne({where: { id: newRedSocial.id }});
+    const storedRedSocial: RedSocialEntity = await repository.findOne({where: { id: newRedSocial.id}});
     expect(storedRedSocial).not.toBeNull();
     expect(storedRedSocial.nombre).toEqual(newRedSocial.nombre);
     expect(storedRedSocial.slogan).toEqual(newRedSocial.slogan);
