@@ -685,7 +685,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "{{baseUrl}}/albums/{{album_id}}/fotos/{{invalid_date_foto_id}}",
+					"raw": "{{baseUrl}}/albums/{{album_id}}/fotos/{{invalid_foto_id}}",
 					"host": [
 						"{{baseUrl}}"
 					],
@@ -693,7 +693,7 @@
 						"albums",
 						"{{album_id}}",
 						"fotos",
-						"{{invalid_date_foto_id}}"
+						"{{invalid_foto_id}}"
 					]
 				}
 			},

@@ -537,7 +537,7 @@
 					"script": {
 						"exec": [
 							"var data = pm.response.json()",
-							"pm.globals.set(\"invalid_date_foto_id\", data.id);",
+							"pm.globals.set(\"invalid_foto_id\", data.id);",
 							"",
 							"pm.test(\"Status code is 201\", function () {",
 							"   pm.response.to.have.status(201);",
