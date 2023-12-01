@@ -21,6 +21,9 @@ Esta prueba intenta añadir una foto con un id inválido a un álbum. Es importa
 ### Add a photo to an invalid album
 Esta prueba intenta añadir una foto a un álbum con un id inválido. Es importante hacerla para verificar que la lógica haya sido definida correctamente y se muestre un mensaje de error cuando se busque insertar una foto a un álbum que no existe.
 
+### Add a photo to an album w/ 5 photos
+Esta prueba intenta añadir una foto a un álbum que ya tiene 5 fotos.  Es importante hacerla para verificar que la traducción del UML se haya hecho correctamente y se muestre un mensaje de error cuando se busque insertar una foto a un álbum lleno.
+
 ### Add a photo w/ invalid date to an album
 Esta prueba intenta añadir una foto a un álbum donde la fecha de la foto no se encuentra entre las fechas del álbum. Es importante hacerla para verificar que la lógica haya sido definida correctamente y se muestre un mensaje de error cuando se busque insertar una foto con fecha errónea a un álbum.
 

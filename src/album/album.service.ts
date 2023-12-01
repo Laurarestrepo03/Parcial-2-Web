@@ -40,8 +40,13 @@ export class AlbumService {
         if (!album)
             throw new BusinessLogicException("The album with the given id was not found", BusinessError.NOT_FOUND);
         if (album.fechaInicio <= foto.fecha && foto.fecha <= album.fechaFin) {
-            album.fotos = [...album.fotos, foto];
-            return await this.albumRepository.save(album);
+            if (album.fotos.length == 5) {
+                throw new BusinessLogicException("An album can only have up to 5 photos", BusinessError.PRECONDITION_FAILED);
+            }
+            else if (album.fotos.length < 5){
+                album.fotos = [...album.fotos, foto];
+                return await this.albumRepository.save(album);
+            }    
         }  
         else if (album.fechaInicio > foto.fecha || foto.fecha > album.fechaFin) {
             throw new BusinessLogicException("Fecha for photo was not between album fecha inicio and fecha fin", BusinessError.PRECONDITION_FAILED);
@@ -57,7 +62,7 @@ export class AlbumService {
         }
         catch (error) {
             if (error.code === '23503') {
-                throw new BusinessLogicException("Album with photos cannot be deleted", BusinessError.PRECONDITION_FAILED);
+                throw new BusinessLogicException("An album with photos cannot be deleted", BusinessError.PRECONDITION_FAILED);
             }
         }
     }
