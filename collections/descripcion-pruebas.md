@@ -91,4 +91,4 @@ Esta prueba permite recuperar un usuario añadido previamente. Es importante hac
 Esta prueba intenta recuperar un usuario con un id inválido. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y se muestre un mensaje de error cuando se busque un usuario que no existe.
 
 ### Get all users
-Esta prueba intenta recuperar todas los usuerioa. Es importante hacer esta prueba porque, además de ser un método importante, verifica que la adición de todos los usuarios haya funcionado.
+Esta prueba intenta recuperar todas los usuarios. Es importante hacer esta prueba porque, además de ser un método importante, verifica que la adición de todos los usuarios haya funcionado.
