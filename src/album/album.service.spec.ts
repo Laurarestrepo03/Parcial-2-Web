@@ -46,7 +46,7 @@ describe('AlbumService', () => {
     expect(service).toBeDefined();
   });
 
-  it('create should return a new album', async () => {
+  it('createAlbum should return a new album', async () => {
     const album: AlbumEntity = {
       id: faker.string.uuid(),
       fechaInicio: faker.date.past(),
@@ -65,7 +65,7 @@ describe('AlbumService', () => {
     expect(storedAlbum.titulo).toEqual(newAlbum.titulo);
   });
 
-  it('create should throw an exception for an invalid album', async () => {
+  it('createAlbum should throw an exception for an invalid album', async () => {
     const album: AlbumEntity = {
       id: faker.string.uuid(),
       fechaInicio: faker.date.past(),
@@ -119,7 +119,7 @@ describe('AlbumService', () => {
     expect(result.fotos[0].fecha).toEqual(newFoto.fecha)
   });
 
-  it('addPhotoToAlbum should should thrown exception for an invalid photo', async () => {
+  it('addPhotoToAlbum should should throw exception for an invalid photo', async () => {
     
     const newAlbum: AlbumEntity = await albumRepository.save({
       id: faker.string.uuid(),
@@ -140,14 +140,14 @@ describe('AlbumService', () => {
     await expect(() => service.addPhotoToAlbum(newAlbum.id, newFoto.id)).rejects.toHaveProperty("message", "Fecha for photo was not between album fecha inicio and fecha fin");
   });
 
-  it('delete should remove an album', async () => {
+  it('deleteAlbum should remove an album', async () => {
     const album: AlbumEntity = albumList[0];
     await service.deleteAlbum(album.id);
     const deletedAlbum: AlbumEntity = await albumRepository.findOne({where:{ id: album.id }});
     expect(deletedAlbum).toBeNull();
   });
 
-  it('delete should throw an exception for an invalid album', async () => {
+  it('deleteAlbum should throw an exception for an invalid album', async () => {
     const album: AlbumEntity = albumList[0];
     await service.deleteAlbum(album.id);
     await expect(() => service.deleteAlbum("0")).rejects.toHaveProperty("message", "The album with the given id was not found")
