@@ -9,6 +9,7 @@ import { FotoService } from './foto.service';
 import { FotoEntity } from './foto.entity';
 import { UsuarioEntity } from '../usuario/usuario.entity';
 import { AlbumEntity } from '../album/album.entity';
+import { AlbumService } from '../album/album.service';
 
 describe('FotoService', () => {
   let service: FotoService;
@@ -20,7 +21,7 @@ describe('FotoService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [...TypeOrmTestingConfig()],
-      providers: [FotoService],
+      providers: [FotoService, AlbumService],
     }).compile();
 
     service = module.get<FotoService>(FotoService);

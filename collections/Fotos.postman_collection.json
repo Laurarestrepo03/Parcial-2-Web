@@ -110,7 +110,322 @@
 			]
 		},
 		{
-			"name": "Add an invalid photo",
+			"name": "Add a photo w/ invalid ISO",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"    pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.message).to.eql(\"ISO was not between 100 and 6400\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ISO\": 6500,\n  \"valObturacion\": 2,\n  \"apertura\": 1,\n  \"fecha\": \"2023-06-30T00:00:00-05:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/fotos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fotos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a photo w/ invalid ISO",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ISO\": 6500,\n  \"valObturacion\": 2,\n  \"apertura\": 1,\n  \"fecha\": \"2023-06-30T00:00:00-05:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/fotos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fotos"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "63"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3f-195Jg2L2eLfhtEAEBv4ZNoGdcoQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Dec 2023 02:25:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"ISO was not between 100 and 6400\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add a photo w/ invalid valObturacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"    pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.message).to.eql(\"ValObturacion was not between 2 and 250\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ISO\": 100,\n  \"valObturacion\": 251,\n  \"apertura\": 1,\n  \"fecha\": \"2023-06-30T00:00:00-05:00\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/fotos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fotos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a photo w/ invalid valObturacion",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ISO\": 100,\n  \"valObturacion\": 251,\n  \"apertura\": 1,\n  \"fecha\": \"2023-06-30T00:00:00-05:00\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/fotos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fotos"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-mPBm9yLMjRoEvgREN2vjlLt54jA\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Dec 2023 02:29:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"ValObturacion was not between 2 and 250\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add a photo w/ invalid apertura",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"    pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.message).to.eql(\"Apertura was not between 1 and 32\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ISO\": 100,\n  \"valObturacion\": 2,\n  \"apertura\": 33,\n  \"fecha\": \"2023-06-30T00:00:00-05:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/fotos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fotos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a photo w/ invalid apertura",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ISO\": 100,\n  \"valObturacion\": 2,\n  \"apertura\": 33,\n  \"fecha\": \"2023-06-30T00:00:00-05:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/fotos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fotos"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "64"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"40-uqwQfHGVfDK4RuN+IzsdAT/oHQI\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Dec 2023 02:31:22 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"Apertura was not between 1 and 32\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add a photo w/ invalid avg values",
 			"event": [
 				{
 					"listen": "test",
@@ -153,7 +468,7 @@
 			},
 			"response": [
 				{
-					"name": "Add an invalid photo",
+					"name": "Add a photo w/ invalid avg values",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
@@ -215,14 +530,14 @@
 			]
 		},
 		{
-			"name": "Add an invalid photo for album",
+			"name": "Add a photo w/ invalid date",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"var data = pm.response.json()",
-							"pm.globals.set(\"invalid_foto_id\", data.id);",
+							"pm.globals.set(\"invalid_date_foto_id\", data.id);",
 							"",
 							"pm.test(\"Status code is 201\", function () {",
 							"   pm.response.to.have.status(201);",
@@ -256,7 +571,7 @@
 			},
 			"response": [
 				{
-					"name": "Add an invalid photo for album",
+					"name": "Add a photo w/ invalid date",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
@@ -497,6 +812,11 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"pm.test('Number of photos > ' + 0, function () {",
+							"    var data = pm.response.json()",
+							"    pm.expect(data.length).to.greaterThan(0)",
+							"});",
+							"",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});"
