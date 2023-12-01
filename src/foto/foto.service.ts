@@ -56,11 +56,12 @@ export class FotoService {
         const foto: FotoEntity = await this.fotoRepository.findOne({where:{id}});
         if (!foto)
           throw new BusinessLogicException("The photo with the given id was not found", BusinessError.NOT_FOUND);
-          await this.fotoRepository.remove(foto); 
-        if (foto.album != null) {
+        const fotoCopy: FotoEntity = foto;
+        await this.fotoRepository.remove(foto); 
+        if (fotoCopy.album != null) {
             const album: AlbumEntity = foto.album;
             const ultima: FotoEntity = (await this.albumService.findAlbumById(album.id)).fotos[-1];
-            if (ultima.id == foto.id) {
+            if (ultima.id == fotoCopy.id) {
                 await this.albumService.deleteAlbum(album.id);
             }
         }   
