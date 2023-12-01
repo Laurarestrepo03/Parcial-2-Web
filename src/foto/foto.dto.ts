@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { IsDate, IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty, IsNumber } from 'class-validator';
 
 export class FotoDto {
 
@@ -15,7 +15,6 @@ export class FotoDto {
     @IsNotEmpty()
     readonly apertura: number;
 
-    @IsDate()
     @IsNotEmpty()
     readonly fecha: Date;
 

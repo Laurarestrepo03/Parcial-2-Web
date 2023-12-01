@@ -1,0 +1,769 @@
+{
+	"info": {
+		"_postman_id": "88c16254-8222-4f77-83fc-ffea41945e13",
+		"name": "Fotos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17535481"
+	},
+	"item": [
+		{
+			"name": "Add a photo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"foto_id\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ISO\": 100,\n  \"valObturacion\": 2,\n  \"apertura\": 1,\n  \"fecha\": \"2023-06-30T00:00:00-05:00\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/fotos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fotos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add a photo",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ISO\": 100,\n  \"valObturacion\": 2,\n  \"apertura\": 1,\n  \"fecha\": \"2023-06-30T00:00:00-05:00\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/fotos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fotos"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "122"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7a-6JP3YwBtc5LiK81Nxuru6euONY8\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Dec 2023 01:42:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ISO\": 100,\n    \"valObturacion\": 2,\n    \"apertura\": 1,\n    \"fecha\": \"2023-06-30T00:00:00-05:00\",\n    \"id\": \"abcb1304-61a3-4fda-8712-abca0814914b\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add an invalid photo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"    pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.message).to.eql(\"More than two values were above average\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ISO\": 3251,\n  \"valObturacion\": 127,\n  \"apertura\": 17,\n  \"fecha\": \"2023-06-30T00:00:00-05:00\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/fotos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fotos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add an invalid photo",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ISO\": 3251,\n  \"valObturacion\": 127,\n  \"apertura\": 17,\n  \"fecha\": \"2023-06-30T00:00:00-05:00\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/fotos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fotos"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "70"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"46-xpps87c59hxAGSnYN0JApf8ixSM\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Dec 2023 01:59:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"More than two values were above average\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Add an invalid photo for album",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()",
+							"pm.globals.set(\"invalid_foto_id\", data.id);",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"   pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"ISO\": 100,\n  \"valObturacion\": 2,\n  \"apertura\": 1,\n  \"fecha\": \"2022-10-30T00:00:00-05:00\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/fotos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fotos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add an invalid photo for album",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ISO\": 100,\n  \"valObturacion\": 2,\n  \"apertura\": 1,\n  \"fecha\": \"2022-10-30T00:00:00-05:00\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/fotos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fotos"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "122"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7a-hHAOs5n5JP+Gzuv+5bASkY/XIPw\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Dec 2023 01:47:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ISO\": 100,\n    \"valObturacion\": 2,\n    \"apertura\": 1,\n    \"fecha\": \"2022-10-30T00:00:00-05:00\",\n    \"id\": \"ee25e666-704f-49a0-b815-f6b2e8115b6a\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get one photo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/fotos/{{foto_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fotos",
+						"{{foto_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get one photo",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/fotos/{{foto_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fotos",
+								"{{foto_id}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "149"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"95-k9iwOFjGw/PG7G04DiFxgwLcKVw\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Dec 2023 02:03:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"0b39bfb5-02a2-4353-ac03-e7e0cbe79ce3\",\n    \"ISO\": 100,\n    \"valObturacion\": 2,\n    \"apertura\": 1,\n    \"fecha\": \"2023-06-30T05:00:00.000Z\",\n    \"usuario\": null,\n    \"album\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Get an invalid photo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"   pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"   var data = pm.response.json();",
+							"   pm.expect(data.message).to.eql(\"The photo with the given id was not found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/fotos/{{invalid_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fotos",
+						"{{invalid_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get an invalid photo",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/fotos/{{invalid_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fotos",
+								"{{invalid_id}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "72"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"48-CEPGPXkvbgeRqdy2EKncrd/sJec\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Dec 2023 02:04:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The photo with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all photos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/fotos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fotos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all photos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/fotos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fotos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "151"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"97-+9lM2M7fR0Dr3qlyyyMrgE/xU0o\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Dec 2023 02:04:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"0b39bfb5-02a2-4353-ac03-e7e0cbe79ce3\",\n        \"ISO\": 100,\n        \"valObturacion\": 2,\n        \"apertura\": 1,\n        \"fecha\": \"2023-06-30T05:00:00.000Z\",\n        \"usuario\": null,\n        \"album\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Delete a photo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"   pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/fotos/{{foto_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fotos",
+						"{{foto_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a photo",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/fotos/{{foto_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fotos",
+								"{{foto_id}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Dec 2023 02:00:49 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete an invalid photo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.message).to.eql(\"The photo with the given id was not found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/fotos/{{invalid_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fotos",
+						"{{invalid_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete an invalid photo",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/fotos/{{invalid_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"fotos",
+								"{{invalid_id}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "72"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"48-CEPGPXkvbgeRqdy2EKncrd/sJec\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 01 Dec 2023 02:01:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The photo with the given id was not found\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:3000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "invalid_id",
+			"value": "00000000-0000-0000-0000-000000000000",
+			"type": "string"
+		}
+	]
+}
