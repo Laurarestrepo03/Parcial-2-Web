@@ -51,7 +51,7 @@ Esta prueba intenta añadir una foto con una apertura fuera de los límites esta
 Esta prueba intenta añadir una foto con valores de ISO, obturación y apertura dentro de sus límites, pero donde los 3 son mayores a su valor medio, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que una foto con valores incorrectos no sea añadida.
 
 ### Add a photo w/ invalid date
-Esta prueba crea una foto con una fecha que se encuentra por fuera de las fechas de un álbum. Es importante hacer esta prueba para ejecutar la prueba de adición de una foto con fecha inválida a un álbum. Esta prueba como tal no verfica la creación de una foto, sino que es una ayuda para la prueba de álbum mencionada. 
+Esta prueba crea una foto con una fecha que se encuentra por fuera de las fechas de un álbum. Es importante hacer esta prueba para ejecutar la prueba Add a photo w/ invalid date to an album. Esta prueba como tal no verifica la creación de una foto, sino que es una ayuda para la prueba de álbum mencionada. 
 
 ### Get one photo
 Esta prueba permite recuperar una foto añadida previamente. Es importante hacer esta prueba porque, además de ser un método importante, verifica que la adición de una foto haya funcionado.
@@ -71,4 +71,21 @@ Esta prueba intenta borrar una foto con un id inválido. Es importante hacer est
 ## Red social
 
 
+
+
 ## Usuario
+
+### Add a user
+Esta prueba verifica la correcta creación de un usuario con un teléfono que tenga solo 10 caracteres. Es importante hacer esta prueba porque es un método importante.
+
+### Add a user w/ an invalid phone number
+Esta prueba intenta añadir un usuario con un teléfono que no tiene 10 caracteres, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que un usuario con teléfono incorrecto no sea añadido.
+
+### Get one user
+Esta prueba permite recuperar un usuario añadido previamente. Es importante hacer esta prueba porque, además de ser un método importante, verifica que la adición de un usuario haya funcionado.
+
+### Get an invalid user
+Esta prueba intenta recuperar un usuario con un id inválido. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y se muestre un mensaje de error cuando se busque un usuario que no existe.
+
+### Get all users
+Esta prueba intenta recuperar todas los usuerioa. Es importante hacer esta prueba porque, además de ser un método importante, verifica que la adición de todos los usuarios haya funcionado.
