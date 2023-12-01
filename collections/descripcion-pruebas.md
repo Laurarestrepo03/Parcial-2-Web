@@ -1,10 +1,10 @@
 ## Album
 
 ### Add an album
-Esta prueba verifica la correcta creación de un álbum con un título no vacío. Es importante hacer esta prueba porque, además de ser un método importante, es necesario añadir un álbum para hacer otras pruebas.
+Esta prueba verifica la correcta creación de un álbum con un título no vacío. Es importante hacer esta prueba porque, además de ser un método importante, verifica que todos los valores del body cumplan los requerimientos establecidos. No solo eso, sino que es necesario añadir un álbum para hacer otras pruebas.
 
 ### Add an album w/ invalid title
-Esta prueba intenta añadir un álbum con un título vacío, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que un álbum con título vacío no sea añadido.
+Esta prueba intenta añadir un álbum con un título vacío, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que un álbum con título vacío no sea añadido, además de mostrar un mensaje de error.
 
 ### Get one album
 Esta prueba permite recuperar un álbum añadido previamente. Es importante hacer esta prueba porque, además de ser un método importante, verifica que la adición de un álbum haya funcionado.
@@ -36,19 +36,19 @@ Esta prueba intenta borrar un álbum con fotos. Es importante hacer esta prueba 
 ## Foto
 
 ### Add a photo
-Esta prueba verifica la correcta creación de una foto con valores de ISO, obturación y apertura adecuados. Es importante hacer esta prueba porque, además de ser un método importante, es necesario añadir una foto para hacer otras pruebas.
+Esta prueba verifica la correcta creación de una foto con valores de ISO, obturación y apertura adecuados. Es importante hacer esta prueba porque, además de ser un método importante, verifica que todos los valores del body cumplan los requerimientos establecidos. No solo eso, sino que es necesario añadir una foto para hacer otras pruebas.
 
 ### Add a photo w/ invalid ISO
-Esta prueba intenta añadir una foto con un ISO fuera de los límites establecidos, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que una foto con un ISO incorrecto no sea añadida.
+Esta prueba intenta añadir una foto con un ISO fuera de los límites establecidos, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que una foto con un ISO incorrecto no sea añadida, además de mostrar un mensaje de error.
 
 ### Add a photo w/ invalid valObturacion
-Esta prueba intenta añadir una foto con una obturación fuera de los límites establecidos, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que una foto con una obturación incorrecta no sea añadida.
+Esta prueba intenta añadir una foto con una obturación fuera de los límites establecidos, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que una foto con una obturación incorrecta no sea añadida, además de mostrar un mensaje de error.
 
 ### Add a photo w/ invalid apertura
-Esta prueba intenta añadir una foto con una apertura fuera de los límites establecidos, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que una foto con una apertura incorrecta no sea añadida.
+Esta prueba intenta añadir una foto con una apertura fuera de los límites establecidos, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que una foto con una apertura incorrecta no sea añadida, además de mostrar un mensaje de error.
 
 ### Add a photo w/ invalid avg values
-Esta prueba intenta añadir una foto con valores de ISO, obturación y apertura dentro de sus límites, pero donde los 3 son mayores a su valor medio, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que una foto con valores incorrectos no sea añadida.
+Esta prueba intenta añadir una foto con valores de ISO, obturación y apertura dentro de sus límites, pero donde los 3 son mayores a su valor medio, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que una foto con valores incorrectos no sea añadida, además de mostrar un mensaje de error.
 
 ### Add a photo w/ invalid date
 Esta prueba crea una foto con una fecha que se encuentra por fuera de las fechas de un álbum. Es importante hacer esta prueba para ejecutar la prueba Add a photo w/ invalid date to an album. Esta prueba como tal no verifica la creación de una foto, sino que es una ayuda para la prueba de álbum mencionada. 
@@ -70,16 +70,19 @@ Esta prueba intenta borrar una foto con un id inválido. Es importante hacer est
 
 ## Red social
 
+### Add a social network
+Esta prueba verifica la correcta creación de una red social con un slogan de por lo menos 20 caracteres. Es importante hacer esta prueba porque, además de ser un método importante, verifica que todos los valores del body cumplan los requerimientos establecidos.
 
-
+### Add a social network w/ invalid slogan
+Esta prueba intenta añadir una red social con un slogan de menos de 20 caracteres, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que una red social con slogan incorrecto no sea añadida, además de mostrar un mensaje de error.
 
 ## Usuario
 
 ### Add a user
-Esta prueba verifica la correcta creación de un usuario con un teléfono que tenga solo 10 caracteres. Es importante hacer esta prueba porque es un método importante.
+Esta prueba verifica la correcta creación de un usuario con un teléfono de solo 10 caracteres. Es importante hacer esta prueba porque, además de ser un método importante, verifica que todos los valores del body cumplan los requerimientos establecidos.
 
 ### Add a user w/ an invalid phone number
-Esta prueba intenta añadir un usuario con un teléfono que no tiene 10 caracteres, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que un usuario con teléfono incorrecto no sea añadido.
+Esta prueba intenta añadir un usuario con un teléfono que no tiene 10 caracteres, lo cual no es posible. Es importante hacer esta prueba para verificar que la lógica haya sido definida correctamente y comprobar que un usuario con teléfono incorrecto no sea añadido, además de mostrar un mensaje de error.
 
 ### Get one user
 Esta prueba permite recuperar un usuario añadido previamente. Es importante hacer esta prueba porque, además de ser un método importante, verifica que la adición de un usuario haya funcionado.
