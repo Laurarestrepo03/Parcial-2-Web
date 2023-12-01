@@ -24,8 +24,7 @@ import { AlbumEntity } from './album/album.entity';
       entities: [FotoEntity, UsuarioEntity, RedSocialEntity, AlbumEntity],
       dropSchema: true,
       synchronize: true,
-      keepConnectionAlive: true,
-      //logging: true
+      keepConnectionAlive: true
     })],
   controllers: [AppController],
   providers: [AppService],
