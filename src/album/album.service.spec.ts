@@ -91,7 +91,7 @@ describe('AlbumService', () => {
     await expect(() => service.findAlbumById("0")).rejects.toHaveProperty("message", "The album with the given id was not found")
   });
 
-  it('addPhotoToAlbum should add a foto to an album', async () => {
+  it('addPhotoToAlbum should add a photo to an album', async () => {
     
     const newAlbum: AlbumEntity = await albumRepository.save({
       id: faker.string.uuid(),
@@ -119,7 +119,7 @@ describe('AlbumService', () => {
     expect(result.fotos[0].fecha).toEqual(newFoto.fecha)
   });
 
-  it('addPhotoToAlbum should should throw exception for an invalid foto', async () => {
+  it('addPhotoToAlbum should should throw exception for an invalid photo', async () => {
     
     const newAlbum: AlbumEntity = await albumRepository.save({
       id: faker.string.uuid(),

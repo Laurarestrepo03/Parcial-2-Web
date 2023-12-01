@@ -52,7 +52,7 @@ describe('FotoService', () => {
     expect(service).toBeDefined();
   });
 
-  it('createFoto should return a new foto', async () => {
+  it('createFoto should return a new photo', async () => {
     const foto: FotoEntity = {
       id: faker.string.uuid(),
       ISO: faker.number.int({min: 100, max: 3250}), //3250 so it is not above avg
@@ -74,7 +74,7 @@ describe('FotoService', () => {
     expect(storedFoto.fecha).toEqual(newFoto.fecha);
   });
 
-  it('createFoto should throw an exception for an invalid foto', async () => {
+  it('createFoto should throw an exception for an invalid photo', async () => {
     const foto: FotoEntity = {
       id: faker.string.uuid(),
       ISO: 3251, //above avg
@@ -89,7 +89,7 @@ describe('FotoService', () => {
 
   });
 
-  it('findFotoById should return a foto by id', async () => {
+  it('findFotoById should return a photo by id', async () => {
     const storedFoto: FotoEntity = fotoList[0];
     const foto: FotoEntity = await service.findFotoById(storedFoto.id);
     expect(foto).not.toBeNull();
@@ -99,7 +99,7 @@ describe('FotoService', () => {
     expect(foto.fecha).toEqual(storedFoto.fecha)
   });
 
-  it('findFotoById should throw an exception for an invalid foto', async () => {
+  it('findFotoById should throw an exception for an invalid photo', async () => {
     await expect(() => service.findFotoById("0")).rejects.toHaveProperty("message", "The photo with the given id was not found")
   });
 
@@ -111,14 +111,14 @@ describe('FotoService', () => {
 
   //findAllFotos does not have a negative case
 
-  it('deleteFoto should remove a foto', async () => {
+  it('deleteFoto should remove a photo', async () => {
     const foto: FotoEntity = fotoList[0];
     await service.deleteFoto(foto.id);
     const deletedFoto: FotoEntity = await repository.findOne({where:{ id: foto.id }});
     expect(deletedFoto).toBeNull();
   });
 
-  it('deleteFoto should throw an exception for an invalid foto', async () => {
+  it('deleteFoto should throw an exception for an invalid photo', async () => {
     const foto: FotoEntity = fotoList[0];
     await service.deleteFoto(foto.id);
     await expect(() => service.deleteFoto("0")).rejects.toHaveProperty("message", "The photo with the given id was not found")
