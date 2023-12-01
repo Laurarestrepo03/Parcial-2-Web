@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AlbumService } from './album.service';
 import { AlbumEntity } from './album.entity';
-import { FotoEntity } from 'src/foto/foto.entity';
+import { FotoEntity } from '../foto/foto.entity';
 
 
 @Module({

@@ -16,7 +16,7 @@ export class UsuarioEntity {
     telefono: string;
 
     @ManyToOne(() => RedSocialEntity, redSocial => redSocial.usuarios)
-    redSocial: UsuarioEntity;
+    redSocial: RedSocialEntity;
 
     @OneToMany(() => FotoEntity, foto => foto.usuario)
     fotos: FotoEntity[]

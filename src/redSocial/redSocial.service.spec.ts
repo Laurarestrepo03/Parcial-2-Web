@@ -26,7 +26,7 @@ describe('RedSocialService', () => {
     expect(service).toBeDefined();
   });
 
-  it('createRedSocial should return a new red social', async () => {
+  it('createRedSocial should return a new social network', async () => {
     const redSocial: RedSocialEntity = {
       id: faker.string.uuid(),
       nombre: faker.lorem.word(),
@@ -43,7 +43,7 @@ describe('RedSocialService', () => {
     expect(storedRedSocial.slogan).toEqual(newRedSocial.slogan);
   });  
 
-  it('createRedSocial should throw an exception for an invalid red social', async () => {
+  it('createRedSocial should throw an exception for an invalid social network', async () => {
     const redSocial: RedSocialEntity = {
       id: faker.string.uuid(),
       nombre: faker.lorem.word(),

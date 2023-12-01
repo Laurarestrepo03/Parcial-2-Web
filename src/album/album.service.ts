@@ -35,7 +35,7 @@ export class AlbumService {
     async addPhotoToAlbum(albumId: string, photoId: string): Promise<AlbumEntity> {
         const foto: FotoEntity = await this.fotoRepository.findOne({where: {id: photoId}});
         if (!foto)
-            throw new BusinessLogicException("The foto with the given id was not found", BusinessError.NOT_FOUND);
+            throw new BusinessLogicException("The photo with the given id was not found", BusinessError.NOT_FOUND);
         const album: AlbumEntity = await this.albumRepository.findOne({where: {id: albumId}, relations: ["fotos"]});
         if (!album)
             throw new BusinessLogicException("The album with the given id was not found", BusinessError.NOT_FOUND);

@@ -99,7 +99,7 @@ describe('FotoService', () => {
   });
 
   it('findFotoById should throw an exception for an invalid foto', async () => {
-    await expect(() => service.findFotoById("0")).rejects.toHaveProperty("message", "The foto with the given id was not found")
+    await expect(() => service.findFotoById("0")).rejects.toHaveProperty("message", "The photo with the given id was not found")
   });
 
   it('findAllFotos should return all photos', async () => {
@@ -108,7 +108,7 @@ describe('FotoService', () => {
     expect(fotos).toHaveLength(fotoList.length);
   });
 
-  //findAllFotos does not have negative case
+  //findAllFotos does not have a negative case
 
   it('deleteFoto should remove a foto', async () => {
     const foto: FotoEntity = fotoList[0];
@@ -120,7 +120,7 @@ describe('FotoService', () => {
   it('deleteFoto should throw an exception for an invalid foto', async () => {
     const foto: FotoEntity = fotoList[0];
     await service.deleteFoto(foto.id);
-    await expect(() => service.deleteFoto("0")).rejects.toHaveProperty("message", "The foto with the given id was not found")
+    await expect(() => service.deleteFoto("0")).rejects.toHaveProperty("message", "The photo with the given id was not found")
   });
   
 });
