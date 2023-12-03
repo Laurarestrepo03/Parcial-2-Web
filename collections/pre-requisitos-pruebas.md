@@ -22,6 +22,11 @@ Agregar un álbum.
 ### Add a photo to an invalid album
 Agregar una foto.
 
+### Add a an already added photo to an album
+- Agregar un álbum.
+- Aregar una foto.
+- Agregar foto al álbum.
+
 ### Add a photo to an album w/ 5 photos
 - Agregar un álbum.
 - Agregar una foto y luego asociarla a un álbum x5.

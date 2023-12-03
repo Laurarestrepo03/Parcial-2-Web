@@ -476,6 +476,99 @@
 			]
 		},
 		{
+			"name": "Add an already added photo to an album",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 412\", function () {",
+							"    pm.response.to.have.status(412);",
+							"});",
+							"",
+							"pm.test(\"Get expected error message\", function () {",
+							"    var data = pm.response.json();",
+							"    pm.expect(data.message).to.eql(\"The photo with the given id is already in the album\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/albums/{{album_id}}/fotos/{{foto_id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"albums",
+						"{{album_id}}",
+						"fotos",
+						"{{foto_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add an already added photo to an album",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/albums/{{album_id}}/fotos/{{foto_id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"albums",
+								"{{album_id}}",
+								"fotos",
+								"{{foto_id}}"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "82"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"52-REyhFs3E9MmFQ69VeUEMaaXB6XE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 03 Dec 2023 15:19:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 412,\n    \"message\": \"The photo with the given id is already in the album\"\n}"
+				}
+			]
+		},
+		{
 			"name": "Add an invalid photo to an album",
 			"event": [
 				{
