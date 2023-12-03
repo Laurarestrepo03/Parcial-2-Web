@@ -1,4 +1,4 @@
-## Album
+## Albums
 
 ### Add an album
 Ninguno.
@@ -46,7 +46,7 @@ Ninguno.
 - Agregar una foto.
 - Agregar foto al álbum.
 
-## Foto
+## Fotos
 
 ### Add a photo
 Ninguno.
@@ -81,7 +81,7 @@ Agregar una foto.
 ### Delete an invalid photo
 Ninguno.
 
-## Red social
+## Redes sociales
 
 ### Add a social network
 Ninguno.
@@ -89,7 +89,7 @@ Ninguno.
 ### Add a social network w/ invalid slogan
 Ninguno.
 
-## Usuario
+## Usuarios
 
 ### Add a user
 Ninguno.
