@@ -5,7 +5,6 @@ import { FotoEntity } from './foto.entity';
 import { Repository } from 'typeorm';
 import { BusinessError, BusinessLogicException } from '../shared/errors/business-errors';
 import { AlbumEntity } from '../album/album.entity';
-import { AlbumService } from '../album/album.service';
 
 @Injectable()
 export class FotoService {
@@ -13,7 +12,8 @@ export class FotoService {
     constructor(
         @InjectRepository(FotoEntity)
         private readonly fotoRepository: Repository<FotoEntity>,
-        private readonly albumService: AlbumService,
+        @InjectRepository(AlbumEntity)
+        private readonly albumRepository: Repository<AlbumEntity>
     ){}
 
     async createFoto(foto: FotoEntity): Promise<FotoEntity> {
@@ -60,9 +60,9 @@ export class FotoService {
         const albumId = foto.album?.id;
         await this.fotoRepository.remove(foto);
         if (albumId != undefined) {
-            const albumWithPhotos: AlbumEntity = await this.albumService.findAlbumById(albumId);
-            if (albumWithPhotos.fotos.length === 0) {
-              await this.albumService.deleteAlbum(albumId);
+            const album: AlbumEntity = await this.albumRepository.findOne({where: {id: albumId}, relations: ["fotos"]});
+            if (album.fotos.length === 0) {
+              await this.albumRepository.remove(album);
             }
           }
       }

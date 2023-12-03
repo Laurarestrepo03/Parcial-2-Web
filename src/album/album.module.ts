@@ -10,7 +10,6 @@ import { AlbumController } from './album.controller';
 @Module({
   providers: [AlbumService],
   imports: [TypeOrmModule.forFeature([AlbumEntity, FotoEntity])],
-  exports: [TypeOrmModule.forFeature([AlbumEntity])],
   controllers: [AlbumController],
 })
 export class AlbumModule {}
