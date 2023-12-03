@@ -1,4 +1,4 @@
-## Album
+## Albums
 
 ### Add an album
 Esta prueba verifica la correcta creación de un álbum con un título no vacío. Es importante hacerla porque, además de ser un método importante, verifica que todos los valores del body cumplan los requerimientos establecidos. No solo eso, sino que es necesario añadir un álbum para hacer otras pruebas.
@@ -39,7 +39,7 @@ Esta prueba intenta borrar un álbum con un id inválido. Es importante hacerla 
 ### Delete an album w/ photos
 Esta prueba intenta borrar un álbum con fotos. Es importante hacerla para verificar que la lógica haya sido definida correctamente y se muestre un mensaje de error cuando se intente eliminar un álbum que tiene fotos.
 
-## Foto
+## Fotos
 
 ### Add a photo
 Esta prueba verifica la correcta creación de una foto con valores de ISO, obturación y apertura adecuados. Es importante hacerla porque, además de ser un método importante, verifica que todos los valores del body cumplan los requerimientos establecidos. No solo eso, sino que es necesario añadir una foto para hacer otras pruebas.
@@ -74,7 +74,7 @@ Esta prueba permite borrar una foto. Es importante hacerla porque, además de se
 ### Delete an invalid photo
 Esta prueba intenta borrar una foto con un id inválido. Es importante hacerla para verificar que la lógica haya sido definida correctamente y se muestre un mensaje de error cuando se intente eliminar una foto que no existe.
 
-## Red social
+## Redes sociales
 
 ### Add a social network
 Esta prueba verifica la correcta creación de una red social con un slogan de por lo menos 20 caracteres. Es importante hacerla porque, además de ser un método importante, verifica que todos los valores del body cumplan los requerimientos establecidos.
@@ -82,7 +82,7 @@ Esta prueba verifica la correcta creación de una red social con un slogan de po
 ### Add a social network w/ invalid slogan
 Esta prueba intenta añadir una red social con un slogan de menos de 20 caracteres, lo cual no es posible. Es importante hacerla para verificar que la lógica haya sido definida correctamente y comprobar que una red social con slogan incorrecto no sea añadida, además de mostrar un mensaje de error.
 
-## Usuario
+## Usuarios
 
 ### Add a user
 Esta prueba verifica la correcta creación de un usuario con un teléfono de solo 10 caracteres. Es importante hacerla porque, además de ser un método importante, verifica que todos los valores del body cumplan los requerimientos establecidos.
