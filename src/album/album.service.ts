@@ -44,8 +44,14 @@ export class AlbumService {
                 throw new BusinessLogicException("An album can only have up to 5 photos", BusinessError.PRECONDITION_FAILED);
             }
             else if (album.fotos.length < 5){
-                album.fotos = [...album.fotos, foto];
-                return await this.albumRepository.save(album);
+                if (album.fotos.some(f => f.id == foto.id)) {
+                    throw new BusinessLogicException("The photo with the given id is already in the album", BusinessError.PRECONDITION_FAILED);
+                }
+                else {
+                    album.fotos = [...album.fotos, foto];
+                    return await this.albumRepository.save(album);
+                }
+                
             }    
         }  
         else if (album.fechaInicio > foto.fecha || foto.fecha > album.fechaFin) {
