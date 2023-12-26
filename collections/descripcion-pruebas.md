@@ -15,7 +15,7 @@ Esta prueba intenta recuperar un álbum con un id inválido. Es importante hacer
 ### Add a photo to an album
 Esta prueba permite añadir una foto a un álbum. Es importante hacerla para verificar la correcta adición de una foto a un álbum, así como también la correcta creación de tanto el álbum como la foto.
 
-### Add a an already added photo to an album
+### Add an already added photo to an album
 Esta prueba intenta añadir una foto que ya ha sido añadida a un álbum. Es importante hacerla para verificar que la lógica haya sido definida correctamente y se muestre un mensaje de error cuando se busque insertar una foto que ya fue previamente añadida.
 
 ### Add an invalid photo to an album
